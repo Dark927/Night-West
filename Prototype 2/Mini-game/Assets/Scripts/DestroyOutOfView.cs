@@ -16,6 +16,11 @@ public class DestroyOutOfView : MonoBehaviour
     {
         if((transform.position.z > maxTopBound) || (transform.position.z < maxBottomBound))
         {
+            if(transform.position.z < maxBottomBound)
+            {
+                Debug.Log("Game Over!");
+            }
+
             Destroy(gameObject);
         }
 

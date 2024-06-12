@@ -423,7 +423,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 15
-  maxBorderRange: 15
+  maxBorderRangeX: 15
+  maxBorderDownZ: 0
+  maxBorderUpZ: 5
   projectileFoodPrefab: {fileID: 6020522583519174840, guid: 03ddd071caa5f1d459c11c3e7314c281, type: 3}
 --- !u!1 &112120
 GameObject:
