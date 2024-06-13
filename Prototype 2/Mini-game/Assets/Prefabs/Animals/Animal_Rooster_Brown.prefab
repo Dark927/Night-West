@@ -1419,7 +1419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b10205bd341d09f46b4822cad3f8b011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodToLeave: 2
+  foodToLeave: 1
   runAwayBottomBound: -5
   runAwaySideBounds: 22
 --- !u!114 &1166871880451360648

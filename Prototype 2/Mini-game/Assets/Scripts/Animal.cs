@@ -70,10 +70,11 @@ public class Animal : MonoBehaviour
 
         // Update feed bar
 
-        FeedStatus feedBar = GetComponentInChildren<FeedStatus>();
+        FeedStatus feedBar = GetComponentInChildren<FeedStatus>(true);
 
         if (feedBar != null)
         {
+            feedBar.gameObject.SetActive(true);
             feedBar.UpdateFeedBarStatus(foodToLeave, actualFood);
         }
         else
