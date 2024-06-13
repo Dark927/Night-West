@@ -617,8 +617,17 @@ MonoBehaviour:
   - {fileID: 6473373598358964086, guid: dded32fc0cc852a40b90f8d847b6997c, type: 3}
   - {fileID: 833416205769563544, guid: 4464334be44c04149ab38aaaece3c424, type: 3}
   - {fileID: 2363293999664727235, guid: ff2b0e385a7db3b4696a9ee781429613, type: 3}
+  - {fileID: 3354899161930369379, guid: 2d3551f6d6816c242b6f4cce63746169, type: 3}
+  - {fileID: 6167491752148641123, guid: e0a28f51138ba184987b28dff1c191fd, type: 3}
+  - {fileID: 1166871880451487138, guid: 87a009d412f177644b29be74a83b5648, type: 3}
+  - {fileID: 7172573360041398216, guid: 84d35ab7e4e484a4b9250b941bff273c, type: 3}
+  - {fileID: 5084582829499014947, guid: 01d52771d5a87bc408803eff62596d77, type: 3}
+  - {fileID: 2954341986405979329, guid: dee943899f84d6246ae402b06cf384f9, type: 3}
   spawnStartZ: 20
   spawnSpreadX: 15
+  spawnStartX: 21
+  minPosZ: 3
+  maxPosZ: 13
 --- !u!4 &1822062513
 Transform:
   m_ObjectHideFlags: 0
