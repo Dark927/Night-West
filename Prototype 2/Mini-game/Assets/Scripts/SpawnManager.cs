@@ -4,23 +4,35 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    // --------------------------------------------------------------------------------------------------------------
+    // Parameters
+    // --------------------------------------------------------------------------------------------------------------
+
     #region parameters 
 
     [SerializeField] GameObject[] animalsPrefabs;
 
     // Top spawn parameters
 
+    [Space]
+    [Header("Top spawn Settings")]
+
     [SerializeField] float spawnStartZ = 20f;
     [SerializeField] float spawnSpreadX = 15f;
 
     // Side spawn parameters 
-    
+
+    [Space]
+    [Header("Side spawn Settings")]
+
     [SerializeField] float spawnStartX = 21f;
     [SerializeField] float minPosZ = 3f;
     [SerializeField] float maxPosZ = 13f;
 
-    float spawnStartDelay = 2f;
-    float spawnInterval = 3f;
+    [Space]
+    [Header("Time Settings")]
+    [SerializeField] float spawnStartDelay = 2f;
+    [SerializeField] float spawnInterval = 3f;
 
     // Functions names for Invoke
 
@@ -29,9 +41,16 @@ public class SpawnManager : MonoBehaviour
 
     #endregion
 
+    // --------------------------------------------------------------------------------------------------------------
+    // Private Methods
+    // --------------------------------------------------------------------------------------------------------------
+
+    #region Private Methods
 
     private void Start()
     {
+        // Repeat animals spawn
+
         InvokeRepeating(spawnRandomAnimalTop, spawnStartDelay, spawnInterval);
         InvokeRepeating(spawnRandomAnimalSide, spawnStartDelay, spawnInterval);
     }
@@ -71,4 +90,7 @@ public class SpawnManager : MonoBehaviour
 
         Instantiate(spawnAnimal, spawnPosition, animalRotation);
     }
+
+    #endregion
+
 }
