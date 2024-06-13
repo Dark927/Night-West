@@ -20,13 +20,23 @@ public class DestroyOutOfView : MonoBehaviour
 
         if (isOverVerticalBounds || isOverSideBounds)
         {
-            if((transform.position.z < maxBottomBound) || isOverSideBounds)
+            bool isAnimal = (transform.position.z < maxBottomBound) || isOverSideBounds;
+
+            // ≈сли это животное, тогда мы должны отн€ть HP у игрока
+
+            if (isAnimal)
             {
-                Debug.Log("Game Over!");
+                Debug.Log("animal");
+                string playerTag = "Player";
+                GameObject player = GameObject.FindWithTag(playerTag);
+
+                if (player != null)
+                {
+                    player.GetComponent<PlayerController>().TakeDamage();
+                }
             }
 
             Destroy(gameObject);
         }
-
     }
 }

@@ -2,20 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
+    // --------------------------------------------------------------------------------------------------------------
+    // Parameters
+    // --------------------------------------------------------------------------------------------------------------
+
     #region parameters
+
+    // ----------------------------------------------------
+
+    [Space]
+    [Header("Player Stats")]
 
     [SerializeField] float basicSpeed = 10f;
     float actualSpeed = 0f;
+
+    [SerializeField] int basicHp = 5;
+    int actualHp = 0;
+
+    // ----------------------------------------------------
+
+    [Space]
+    [Header("Borders Setting")]
 
     [SerializeField] int maxBorderRangeX = 15;
 
     [SerializeField] int maxBorderDownZ = 0;
     [SerializeField] int maxBorderUpZ = 5;
 
-    [SerializeField] GameObject projectileFoodPrefab;
+    // ----------------------------------------------------
 
+    [Space]
+    [Header("Food projectile Setting")]
+
+    [SerializeField] GameObject projectileFoodPrefab;
+    [SerializeField] Transform projectileSpawnPoint;
+
+
+    // ----------------------------------------------------
+
+    bool isGameStarted = false;
 
     // Functions names for invoke
 
@@ -23,13 +51,50 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+
+    // --------------------------------------------------------------------------------------------------------------
+    // Private methods 
+    // --------------------------------------------------------------------------------------------------------------
+
+    #region Private methods 
+
     private void Start()
     {
-        Invoke(startGame, 1);
+        bool isFatalError = (projectileFoodPrefab == null) || (projectileSpawnPoint == null);
+
+        if (!isFatalError)
+        {
+            Invoke(startGame, 1);
+        }
+        else
+        {
+            Debug.Log("# Fatal Error :: Game can't be started. Some references are null [ PlayerController.cs ]");
+        }    
     }
 
     // Update is called once per frame
     void Update()
+    {
+        if (isGameStarted)
+        {
+            // -------------------------------------------------------------------------
+            // Move character though player input ( up/down, left/right )
+            // -------------------------------------------------------------------------
+
+            PlayerMove();
+
+            // -------------------------------------------------------------------------
+            // Launch food projectile ( forward ) by pressing key
+            // -------------------------------------------------------------------------
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Instantiate(projectileFoodPrefab, projectileSpawnPoint.position, projectileFoodPrefab.transform.rotation);
+            }
+        }
+    }
+
+    private void PlayerMove()
     {
         // -------------------------------------------------------------------------
         // Checking the boundaries so that the character cannot go beyond them
@@ -99,16 +164,6 @@ public class PlayerController : MonoBehaviour
         // Move player 
 
         transform.Translate(direction * Time.deltaTime * actualSpeed);
-
-
-        // -------------------------------------------------------------------------
-        // Launch food projectile ( forward ) by pressing key
-        // -------------------------------------------------------------------------
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Instantiate(projectileFoodPrefab, transform.position, projectileFoodPrefab.transform.rotation);
-        }
     }
 
 
@@ -160,5 +215,32 @@ public class PlayerController : MonoBehaviour
     private void StartGame()
     {
         actualSpeed = basicSpeed;
+        actualHp = basicHp;
+        isGameStarted = true;
     }
+
+    #endregion
+
+    // --------------------------------------------------------------------------------------------------------------
+    // Public Methods
+    // --------------------------------------------------------------------------------------------------------------
+
+    #region Public Methods 
+    
+    public void TakeDamage(int damage = 1)
+    {
+        actualHp = ((actualHp - damage) >= 0) ? actualHp - damage : 0;
+
+        Debug.Log($"HP -> {actualHp}/{basicHp}");
+
+        if(actualHp == 0)
+        {
+            isGameStarted = false;
+            Debug.Log("GAME OVER!");
+            Destroy(gameObject);
+        }
+    }
+
+
+    #endregion
 }
