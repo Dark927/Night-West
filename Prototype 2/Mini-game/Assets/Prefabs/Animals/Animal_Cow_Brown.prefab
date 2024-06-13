@@ -1,5 +1,99 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &425142271
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 425142272}
+  - component: {fileID: 425142273}
+  m_Layer: 6
+  m_Name: Point Light
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &425142272
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425142271}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 45.9, z: -2.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6473373598358760372}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!108 &425142273
+Light:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 425142271}
+  m_Enabled: 1
+  serializedVersion: 10
+  m_Type: 2
+  m_Shape: 0
+  m_Color: {r: 0.6792453, g: 0.3762964, b: 0, a: 1}
+  m_Intensity: 1.2
+  m_Range: 10.16
+  m_SpotAngle: 30
+  m_InnerSpotAngle: 21.80208
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+    m_CullingMatrixOverride:
+      e00: 1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+    m_UseCullingMatrixOverride: 0
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 126
+  m_RenderingLayerMask: 1
+  m_Lightmapping: 1
+  m_LightShadowCasterMode: 0
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_BoundingSphereOverride: {x: 6.73e-43, y: -220.26709, z: 6.73e-43, w: 1.28e-43}
+  m_UseBoundingSphereOverride: 0
+  m_UseViewFrustumForShadowCasterCull: 1
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!1 &6473373598358963936
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,7 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358794934}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_Neck_TopSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,7 +141,7 @@ GameObject:
   - component: {fileID: -2726191435668404733}
   - component: {fileID: 949795411385652869}
   - component: {fileID: 5432229430377472794}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Animal_Cow_Brown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,6 +162,7 @@ Transform:
   m_Children:
   - {fileID: 6473373598358802016}
   - {fileID: 4598538090438878976}
+  - {fileID: 425142272}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -119,7 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   foodToLeave: 4
   runAwayBottomBound: -5
-  runAwaySideBounds: 22
+  runAwaySideBounds: 21
 --- !u!114 &949795411385652869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,8 +228,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxTopBound: 35
-  maxBottomBound: -7
-  maxSideBound: 23
+  maxBottomBound: -15
+  maxSideBound: 35
 --- !u!65 &5432229430377472794
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -157,7 +252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358778976}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_r_FrontLeg_Knee2SHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +284,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358760568}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_l_HindLeg_Knee2SHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +316,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358798702}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_r_HindLeg_Knee1SHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,7 +348,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358803330}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_Spine_01SHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,7 +381,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6473373598358743132}
   - component: {fileID: 6473373598353733082}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SA_Animals_Bull_Black
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -414,7 +509,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358756748}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_Neck_02SHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -446,7 +541,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358783734}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_r_Clavicle_01_01SHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -478,7 +573,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358752562}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_l_Clavicle_01_01SHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -510,7 +605,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358752722}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_r_HindLeg_AnkleSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -542,7 +637,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358733374}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_l_HindLeg_AnkleSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -574,7 +669,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358775726}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_l_HindLeg_ToeSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -605,7 +700,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358780938}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_l_HindLeg_Knee1SHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -637,7 +732,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358715538}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_l_HindLeg_HipSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -669,7 +764,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358774042}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_r_HindLeg_BallSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -701,7 +796,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358793890}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_Tail_01_04SHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -733,7 +828,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358803772}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_Tail_01_01SHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -765,7 +860,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358782776}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_l_FrontLeg_ToeSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -796,7 +891,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358748224}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_r_FrontLeg_HipSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -828,7 +923,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358721734}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_ROOTSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -863,7 +958,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358797266}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_Neck_01SHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -895,7 +990,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358789982}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_r_FrontLeg_AnkleSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -927,7 +1022,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358777870}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_l_FrontLeg_Knee2SHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -959,7 +1054,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358759852}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_r_HindLeg_HipSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -991,7 +1086,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358796836}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_l_HindLeg_BallSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1023,7 +1118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358737376}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_r_FrontLeg_ToeSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1054,7 +1149,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358741080}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_Tail_01_02SHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1086,7 +1181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358747322}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_Head_JawSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1118,7 +1213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358727412}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_Spine_03SHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1150,7 +1245,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358730524}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_r_FrontLeg_BallSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1183,7 +1278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6473373598358798208}
   - component: {fileID: 6473373598353748522}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SA_Animals_Bull_Brown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1311,7 +1406,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358755248}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_r_HindLeg_ToeSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1342,7 +1437,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358712714}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_r_FrontLeg_Knee1SHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1374,7 +1469,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358799590}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_Tail_01_03SHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1406,7 +1501,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358715822}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_r_Eye_01SHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1437,7 +1532,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358786340}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_l_FrontLeg_HipSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1469,7 +1564,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358734650}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_l_FrontLeg_BallSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1501,7 +1596,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358806264}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_Spine_TopSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1535,7 +1630,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358709024}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_Head_TopSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1569,7 +1664,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6473373598358709194}
   - component: {fileID: 6473373598353963542}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SA_Animals_Cow_White
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1697,7 +1792,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358711744}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_r_HindLeg_Knee2SHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1729,7 +1824,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358742742}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_l_FrontLeg_AnkleSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1761,7 +1856,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358802016}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_SHJntGrp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1797,7 +1892,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358710604}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_l_Eye_01SHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1828,7 +1923,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358723480}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_Head_JawEndSHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1859,7 +1954,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358806512}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_Spine_02SHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1891,7 +1986,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358792362}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_Tail_01_05SHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1923,7 +2018,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6473373598358759016}
   - component: {fileID: 6473373598353721696}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SA_Animals_Cow_Brown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2051,7 +2146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6473373598358767494}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CowRig_l_FrontLeg_Knee1SHJnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2136,6 +2231,22 @@ PrefabInstance:
     - target: {fileID: 8015131091932076591, guid: b7d28c243bc5baf4ba9a1d7d7bd54eae, type: 3}
       propertyPath: m_Name
       value: HungerBar
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015131091932076591, guid: b7d28c243bc5baf4ba9a1d7d7bd54eae, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015131092145494766, guid: b7d28c243bc5baf4ba9a1d7d7bd54eae, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015131092410300997, guid: b7d28c243bc5baf4ba9a1d7d7bd54eae, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015131093024070058, guid: b7d28c243bc5baf4ba9a1d7d7bd54eae, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7d28c243bc5baf4ba9a1d7d7bd54eae, type: 3}

@@ -21,6 +21,8 @@ public class Animal : MonoBehaviour
     [SerializeField] float runAwayBottomBound = -5f;
     [SerializeField] float runAwaySideBounds = 24f;
 
+    float startPositionX = 0f;
+
     bool isLost = false;
 
     #endregion
@@ -31,6 +33,12 @@ public class Animal : MonoBehaviour
 
     #region Private Methods
 
+
+    private void Start()
+    {
+        startPositionX = transform.position.x;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -38,9 +46,23 @@ public class Animal : MonoBehaviour
         {
             Vector3 animalPosition = transform.position;
 
-            bool isRunAway = (animalPosition.z < runAwayBottomBound) || (animalPosition.x > runAwaySideBounds) || (animalPosition.x < (-runAwaySideBounds));
+            // Check different conditions for animal run away (right side, left side, bottom
 
-            // Если животное сбежало, отнимаем HP у игрока
+            bool isRunAway = false;
+
+            if((int)startPositionX < 0)
+            {
+                isRunAway = (animalPosition.x > runAwaySideBounds);
+            }
+            else if((int)startPositionX > 0)
+            {
+                isRunAway = (animalPosition.x < (-runAwaySideBounds));
+            }
+
+            isRunAway = isRunAway || (animalPosition.z < runAwayBottomBound);
+
+            // If the animal run away, take away the player's HP
+
             if (isRunAway)
             {
                 string playerTag = "Player";
