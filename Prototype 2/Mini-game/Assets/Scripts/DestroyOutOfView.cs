@@ -7,8 +7,8 @@ public class DestroyOutOfView : MonoBehaviour
     #region parameters
 
     [SerializeField] float maxTopBound = 35f;
-    [SerializeField] float maxBottomBound = -10f;
-    [SerializeField] float maxSideBound = 25f;
+    [SerializeField] float maxBottomBound = -8f;
+    [SerializeField] float maxSideBound = 24f;
 
     #endregion
 
@@ -20,22 +20,6 @@ public class DestroyOutOfView : MonoBehaviour
 
         if (isOverVerticalBounds || isOverSideBounds)
         {
-            bool isAnimal = (transform.position.z < maxBottomBound) || isOverSideBounds;
-
-            // ≈сли это животное, тогда мы должны отн€ть HP у игрока
-
-            if (isAnimal)
-            {
-                Debug.Log("animal");
-                string playerTag = "Player";
-                GameObject player = GameObject.FindWithTag(playerTag);
-
-                if (player != null)
-                {
-                    player.GetComponent<PlayerController>().TakeDamage();
-                }
-            }
-
             Destroy(gameObject);
         }
     }
