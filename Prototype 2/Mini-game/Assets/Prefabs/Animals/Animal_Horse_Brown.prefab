@@ -2056,6 +2056,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   foodToLeave: 3
+  scoreForFeed: 8
   runAwayBottomBound: -5
   runAwaySideBounds: 21
 --- !u!114 &4254662561139547287

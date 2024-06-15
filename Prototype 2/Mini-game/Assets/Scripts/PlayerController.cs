@@ -22,9 +22,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int basicHp = 5;
     int actualHp = 0;
 
-    int actualScore = 0;
-
-
     // ----------------------------------------------------
 
     [Space]
@@ -219,10 +216,8 @@ public class PlayerController : MonoBehaviour
     {
         actualSpeed = basicSpeed;
         actualHp = basicHp;
-        actualScore = 0;
 
         Debug.Log("Player Lives -> " + actualHp);
-        Debug.Log("Player Score -> " + actualScore);
 
         isGameStarted = true;
     }
@@ -248,13 +243,6 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    public void AddScore(int amount = 1)
-    {
-        actualScore += 1;
-        Debug.Log($"Score -> {actualScore}");
-    }
-
 
     #endregion
 }

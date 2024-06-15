@@ -7,7 +7,11 @@ public class DetectCollisions : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         Animal animal = other.gameObject.GetComponent<Animal>();
-        animal.Feed();
+
+        if (animal != null)
+        {
+            animal.Feed();
+        }
 
         Destroy(gameObject);
     }

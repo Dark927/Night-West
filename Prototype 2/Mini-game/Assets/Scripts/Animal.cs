@@ -10,10 +10,12 @@ public class Animal : MonoBehaviour
 
     #region parameters
 
-    [Header("Run away Settings")]
+    [Header("Main Settings")]
 
     [SerializeField] int foodToLeave = 2;
     int actualFood = 0;
+
+    [SerializeField] int scoreForFeed = 1;
 
     [Space]
     [Header("Run away Settings")]
@@ -106,14 +108,17 @@ public class Animal : MonoBehaviour
 
         // Check if the animal has been fed
 
-        if(actualFood == foodToLeave)
+        if (actualFood == foodToLeave)
         {
-            string playerTag = "Player";
-            GameObject player = GameObject.FindWithTag(playerTag);
+            GameManager gameManager = GameObject.FindAnyObjectByType<GameManager>();
 
-            if (player != null)
+            if (gameManager != null)
             {
-                player.GetComponent<PlayerController>().AddScore();
+                gameManager.AddScore(scoreForFeed);
+            }
+            else
+            {
+                Debug.Log($"# Error : Animal.cs, Object -> {gameObject.name}, gameManager is null!");
             }
 
             Destroy(gameObject);
