@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             Debug.Log("# Fatal Error :: Game can't be started. Some references are null [ PlayerController.cs ]");
-        }    
+        }
     }
 
     // Update is called once per frame
@@ -229,18 +229,49 @@ public class PlayerController : MonoBehaviour
     // --------------------------------------------------------------------------------------------------------------
 
     #region Public Methods 
-    
+
+    public int BasicHP
+    {
+        get { return basicHp; }
+        private set { BasicHP = value; }
+    }
+
+    public int ActualHP
+    {
+        get { return actualHp; }
+        private set { actualHp = value; }
+    }
+
     public void TakeDamage(int damage = 1)
     {
         actualHp = ((actualHp - damage) >= 0) ? actualHp - damage : 0;
 
-        Debug.Log($"HP -> {actualHp}/{basicHp}");
+        GameManager gameManager = GameObject.FindAnyObjectByType<GameManager>();
 
-        if(actualHp == 0)
+        if (gameManager != null)
+        {
+            gameManager.ApplyDamage();
+        }
+
+        if (actualHp == 0)
         {
             isGameStarted = false;
             Debug.Log("GAME OVER!");
             Destroy(gameObject);
+        }
+    }
+
+
+    public void Heal(int amount = 1)
+    {
+        if (actualHp < basicHp)
+        {
+            actualHp += amount;
+
+            if (actualHp > basicHp)
+            {
+                actualHp = basicHp;
+            }
         }
     }
 
