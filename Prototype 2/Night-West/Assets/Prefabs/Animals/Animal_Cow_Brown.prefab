@@ -137,7 +137,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6473373598358760372}
   - component: {fileID: 6473373598349730294}
-  - component: {fileID: 6473373599045966541}
   - component: {fileID: -2726191435668404733}
   - component: {fileID: 949795411385652869}
   - component: {fileID: 5432229430377472794}
@@ -187,19 +186,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6473373599045966541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6473373598358964086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d138e59e48ea3754b903feb5182a7c1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 4
 --- !u!114 &-2726191435668404733
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +198,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b10205bd341d09f46b4822cad3f8b011, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basicSpeed: 4
+  basicDamage: 1
   foodToLeave: 4
   scoreForFeed: 2
   runAwayBottomBound: -5

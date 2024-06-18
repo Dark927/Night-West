@@ -42,10 +42,12 @@ public class Animal : MonoBehaviour
 
     #region Private Methods
 
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
     }
+
 
     private void Start()
     {
@@ -53,34 +55,24 @@ public class Animal : MonoBehaviour
         startPositionX = transform.position.x;
     }
 
+
     // Update is called once per frame
     void Update()
     {
         MoveForward();
+        RunAwayAction();
 
+
+    }
+
+
+    private void RunAwayAction()
+    {
         if (!isLost)
         {
-
-            Vector3 animalPosition = transform.position;
-
-            // Check different conditions for animal run away (right side, left side, bottom
-
-            bool isRunAway = false;
-
-            if ((int)startPositionX < 0)
-            {
-                isRunAway = (animalPosition.x > runAwaySideBounds);
-            }
-            else if ((int)startPositionX > 0)
-            {
-                isRunAway = (animalPosition.x < (-runAwaySideBounds));
-            }
-
-            isRunAway = isRunAway || (animalPosition.z < runAwayBottomBound);
-
             // If the animal run away, take away the player's HP
 
-            if (isRunAway)
+            if (IsRunAway())
             {
                 GameManager gameManager = FindAnyObjectByType<GameManager>();
 
@@ -92,6 +84,28 @@ public class Animal : MonoBehaviour
             }
         }
     }
+
+
+    private bool IsRunAway()
+    {
+        Vector3 animalPosition = transform.position;
+
+        // Check different conditions for animal run away (right side, left side, bottom
+
+        bool isRunAway = false;
+
+        if ((int)startPositionX < 0)
+        {
+            isRunAway = (animalPosition.x > runAwaySideBounds);
+        }
+        else if ((int)startPositionX > 0)
+        {
+            isRunAway = (animalPosition.x < (-runAwaySideBounds));
+        }
+
+        return isRunAway || (animalPosition.z < runAwayBottomBound);
+    }
+
 
     private void MoveForward()
     {
@@ -147,8 +161,15 @@ public class Animal : MonoBehaviour
 
     public void IdleState()
     {
-        actualSpeed = 0f;
+        actualSpeed = 0;
         animator.SetFloat("Speed_f", 0);
+
+        bool isEating = (Random.Range(0, 2) == 1) ? true : false;
+
+        if (isEating)
+        {
+            animator.SetBool("Eat_b", true);
+        }
     }
 
     #endregion

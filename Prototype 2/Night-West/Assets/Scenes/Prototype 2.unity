@@ -1918,6 +1918,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 231346717943903125, guid: 8b44e360c704dd34b8d1884b48f842aa, type: 3}
+      propertyPath: basicHp
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 231346717943903125, guid: 8b44e360c704dd34b8d1884b48f842aa, type: 3}
       propertyPath: hpHeartPrefab
       value: 
       objectReference: {fileID: 349528213276074475, guid: 7deacf05c2e48054f8e61162e0571ee8, type: 3}

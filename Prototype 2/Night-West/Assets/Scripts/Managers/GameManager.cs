@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     [Space]
     [Header("Score")]
     [SerializeField] TextMeshProUGUI scoreValueUI;
+
     int actualScore = 0;
     int startScoreToHeal = 50;
     int scoreToHeal = 50;
@@ -42,7 +43,7 @@ public class GameManager : MonoBehaviour
 
     List<GameObject> hearts;
 
-    string animalTag = "Animal";
+    bool isGameStopped = false;
 
     #endregion
 
@@ -81,16 +82,9 @@ public class GameManager : MonoBehaviour
     {
         // Check if player is dead
 
-        bool playerDead = player.ActualHP == 0;
-
-        if (player.IsGameOver())
+        if (player.IsGameOver() && !isGameStopped)
         {
-            GameObject[] activeAnimals = GameObject.FindGameObjectsWithTag(animalTag);
-
-            foreach (GameObject animal in activeAnimals)
-            {
-
-            }
+            StopGameplay();
         }
 
 
@@ -103,6 +97,26 @@ public class GameManager : MonoBehaviour
             HealPlayer(healForScore);
             scoreToHeal += startScoreToHeal;
         }
+    }
+
+    private void StopGameplay()
+    {
+        // Stop spawning animals
+
+        FindAnyObjectByType<SpawnManager>().StopSpawning();
+
+
+        // Stop all animals from running
+
+        Animal[] activeAnimals = FindObjectsOfType<Animal>();
+
+        foreach (Animal animal in activeAnimals)
+        {
+            animal.IdleState();
+            Debug.Log("done");
+        }
+
+        isGameStopped = true;
     }
 
     #endregion

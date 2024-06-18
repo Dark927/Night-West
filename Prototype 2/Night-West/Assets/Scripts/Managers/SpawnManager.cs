@@ -91,6 +91,21 @@ public class SpawnManager : MonoBehaviour
         Instantiate(spawnAnimal, spawnPosition, animalRotation);
     }
 
+
+    #endregion
+
+
+    // --------------------------------------------------------------------------------------------------------------
+    // Public Methods
+    // --------------------------------------------------------------------------------------------------------------
+
+    #region Public Methods
+
+    public void StopSpawning()
+    {
+        CancelInvoke();
+    }
+
     #endregion
 
 }
