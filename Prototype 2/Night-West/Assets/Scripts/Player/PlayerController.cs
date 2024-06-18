@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
 
     Animator animator;
 
-    bool isGameStarted = false;
+    bool gameOver = false;
 
     // Functions names for invoke
 
@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isGameStarted)
+        if (!gameOver)
         {
             // -------------------------------------------------------------------------
             // Move character though player input ( up/down, left/right )
@@ -230,12 +230,10 @@ public class PlayerController : MonoBehaviour
 
     private void StartGame()
     {
+        gameOver = false;
+
         actualSpeed = basicSpeed;
         actualHp = basicHp;
-
-        Debug.Log("Player Lives -> " + actualHp);
-
-        isGameStarted = true;
     }
 
     #endregion
@@ -245,6 +243,12 @@ public class PlayerController : MonoBehaviour
     // --------------------------------------------------------------------------------------------------------------
 
     #region Public Methods 
+
+    // -------------------------------------------------------
+    // Getters and Setters
+    // -------------------------------------------------------
+
+    #region Getters and Setters
 
     public int BasicHP
     {
@@ -258,22 +262,25 @@ public class PlayerController : MonoBehaviour
         private set { actualHp = value; }
     }
 
+    public bool IsGameOver()
+    {
+        return gameOver;
+    }
+
+    #endregion
+    
+    // -------------------------------------------------------
+
     public void TakeDamage(int damage = 1)
     {
         actualHp = ((actualHp - damage) >= 0) ? actualHp - damage : 0;
 
-        GameManager gameManager = GameObject.FindAnyObjectByType<GameManager>();
-
-        if (gameManager != null)
-        {
-            gameManager.ApplyDamage();
-        }
-
         if (actualHp == 0)
         {
-            isGameStarted = false;
+            gameOver = true;
+
+            animator.SetBool("Death_b", true);
             Debug.Log("GAME OVER!");
-            Destroy(gameObject);
         }
     }
 

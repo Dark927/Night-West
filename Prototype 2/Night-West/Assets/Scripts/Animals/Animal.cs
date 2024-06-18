@@ -12,6 +12,11 @@ public class Animal : MonoBehaviour
 
     [Header("Main Settings")]
 
+    [SerializeField] float basicSpeed;
+    float actualSpeed = 0;
+
+    [SerializeField] int basicDamage = 1;
+
     [SerializeField] int foodToLeave = 2;
     int actualFood = 0;
 
@@ -24,8 +29,10 @@ public class Animal : MonoBehaviour
     [SerializeField] float runAwaySideBounds = 24f;
 
     float startPositionX = 0f;
-
     bool isLost = false;
+
+    Animator animator;
+    string playerTag = "Player";
 
     #endregion
 
@@ -35,28 +42,36 @@ public class Animal : MonoBehaviour
 
     #region Private Methods
 
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void Start()
     {
+        actualSpeed = basicSpeed;
         startPositionX = transform.position.x;
     }
 
     // Update is called once per frame
     void Update()
     {
+        MoveForward();
+
         if (!isLost)
         {
+
             Vector3 animalPosition = transform.position;
 
             // Check different conditions for animal run away (right side, left side, bottom
 
             bool isRunAway = false;
 
-            if((int)startPositionX < 0)
+            if ((int)startPositionX < 0)
             {
                 isRunAway = (animalPosition.x > runAwaySideBounds);
             }
-            else if((int)startPositionX > 0)
+            else if ((int)startPositionX > 0)
             {
                 isRunAway = (animalPosition.x < (-runAwaySideBounds));
             }
@@ -67,17 +82,22 @@ public class Animal : MonoBehaviour
 
             if (isRunAway)
             {
-                string playerTag = "Player";
-                GameObject player = GameObject.FindWithTag(playerTag);
+                GameManager gameManager = FindAnyObjectByType<GameManager>();
 
-                if (player != null)
+                if (gameManager != null)
                 {
-                    player.GetComponent<PlayerController>().TakeDamage();
+                    gameManager.HitPlayer(basicDamage);
                     isLost = true;
                 }
             }
         }
     }
+
+    private void MoveForward()
+    {
+        transform.Translate(Vector3.forward * Time.deltaTime * actualSpeed);
+    }
+
 
     #endregion
 
@@ -123,6 +143,12 @@ public class Animal : MonoBehaviour
 
             Destroy(gameObject);
         }
+    }
+
+    public void IdleState()
+    {
+        actualSpeed = 0f;
+        animator.SetFloat("Speed_f", 0);
     }
 
     #endregion

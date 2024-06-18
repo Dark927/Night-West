@@ -368,7 +368,7 @@ GameObject:
   - component: {fileID: 2119347203887525438}
   m_Layer: 6
   m_Name: Dog_GermanShepherd_01
-  m_TagString: Untagged
+  m_TagString: Animal
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

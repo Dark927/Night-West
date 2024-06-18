@@ -3,6 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+
+public enum UpdateUI
+{
+    Update_InvalidFirst = 0,
+
+    Update_Heal = 1,
+    Update_Damage = 2,
+
+
+    Update_Last
+}
+
+
 public class GameManager : MonoBehaviour
 {
     // --------------------------------------------------------------------------------------------------------------
@@ -20,6 +33,7 @@ public class GameManager : MonoBehaviour
     int actualScore = 0;
     int startScoreToHeal = 50;
     int scoreToHeal = 50;
+    int healForScore = 1;
 
     [Space]
     [Header("HP")]
@@ -27,6 +41,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject hpHeartPrefab;
 
     List<GameObject> hearts;
+
+    string animalTag = "Animal";
 
     #endregion
 
@@ -40,7 +56,7 @@ public class GameManager : MonoBehaviour
     {
         // Score check
 
-        if(scoreValueUI == null)
+        if (scoreValueUI == null)
         {
             Debug.Log($"# Error : GameManager.cs, Object -> {gameObject.name}, scoreValueUI is null!");
         }
@@ -63,14 +79,28 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
+        // Check if player is dead
+
+        bool playerDead = player.ActualHP == 0;
+
+        if (player.IsGameOver())
+        {
+            GameObject[] activeAnimals = GameObject.FindGameObjectsWithTag(animalTag);
+
+            foreach (GameObject animal in activeAnimals)
+            {
+
+            }
+        }
+
+
         // Heal for score
 
         bool isHeal = actualScore >= scoreToHeal;
 
-        if(isHeal)
+        if (isHeal)
         {
-            Debug.Log("heal");
-            ApplyHeal(1);
+            HealPlayer(healForScore);
             scoreToHeal += startScoreToHeal;
         }
     }
@@ -89,30 +119,42 @@ public class GameManager : MonoBehaviour
         scoreValueUI.text = actualScore.ToString();
     }
 
-    public void ApplyDamage()
+    public void HitPlayer(int damage = 1)
     {
-        int actualHeartIndex = player.ActualHP - 1;
-
-        for(int i = 0; i < hearts.Count; ++i)
-        {
-            if(i > actualHeartIndex)
-            {
-                hearts[i].gameObject.SetActive(false);
-            }
-        }
+        player.TakeDamage(damage);
+        UpdateHealthBar(UpdateUI.Update_Damage);
     }
 
-    public void ApplyHeal(int amount = 1)
+    public void HealPlayer(int amount = 1)
     {
         player.Heal(amount);
+        UpdateHealthBar(UpdateUI.Update_Heal);
+    }
 
-        int actualHeartIndex = player.ActualHP - 1;
 
-        for (int i = actualHeartIndex - amount; i < hearts.Count; ++i)
+    public void UpdateHealthBar(UpdateUI UpdateType)
+    {
+
+        if (UpdateType == UpdateUI.Update_Damage)
         {
-            if (i <= actualHeartIndex)
+            int actualHeartIndex = player.ActualHP - 1;
+
+            for (int i = 0; i < hearts.Count; ++i)
             {
-                hearts[i].gameObject.SetActive(true);
+                // If player take damage, remove one heart 
+
+                if ((UpdateType == UpdateUI.Update_Damage) && (i > actualHeartIndex))
+                {
+                    hearts[i].gameObject.SetActive(false);
+                }
+
+
+                // If player get heal, add one heart 
+
+                else if ((UpdateType == UpdateUI.Update_Heal) && (i <= actualHeartIndex))
+                {
+                    hearts[i].gameObject.SetActive(true);
+                }
             }
         }
     }
