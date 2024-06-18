@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class DestroyOutOfView : MonoBehaviour
 {
+    // --------------------------------------------------------------------------------------------------------------
+    // Parameters
+    // --------------------------------------------------------------------------------------------------------------
+
     #region parameters
 
+    [Header("Bounds")]
     [SerializeField] float maxTopBound = 35f;
-    [SerializeField] float maxBottomBound = -8f;
+    [SerializeField] float maxBottomBound = -10f;
     [SerializeField] float maxSideBound = 24f;
 
     #endregion

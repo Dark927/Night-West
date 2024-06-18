@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
     [Space]
     [Header("Food projectile Setting")]
 
-    [SerializeField] GameObject projectileFoodPrefab;
+    [SerializeField] List<GameObject> projectileFoodPrefabs;
     [SerializeField] Transform projectileSpawnPoint;
 
 
@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
     Animator animator;
 
     bool gameOver = false;
+    bool isFatalError = false;
 
     // Functions names for invoke
 
@@ -67,7 +68,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        bool isFatalError = (projectileFoodPrefab == null) || (projectileSpawnPoint == null);
+        isFatalError = (projectileFoodPrefabs.Count == 0) || (projectileSpawnPoint == null);
 
         if (!isFatalError)
         {
@@ -82,6 +83,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Errors check 
+
+        if(isFatalError)
+        {
+            return;
+        }
+
+        // Main mechanics 
+
         if (!gameOver)
         {
             // -------------------------------------------------------------------------
@@ -96,7 +106,9 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Instantiate(projectileFoodPrefab, projectileSpawnPoint.position, projectileFoodPrefab.transform.rotation);
+                int randomIndex = Random.Range(0, projectileFoodPrefabs.Count);
+
+                Instantiate(projectileFoodPrefabs[randomIndex], projectileSpawnPoint.position, projectileFoodPrefabs[randomIndex].transform.rotation);
             }
         }
     }
