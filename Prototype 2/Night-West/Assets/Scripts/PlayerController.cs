@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour
 
     // ----------------------------------------------------
 
+    Animator animator;
+
     bool isGameStarted = false;
 
     // Functions names for invoke
@@ -57,6 +59,11 @@ public class PlayerController : MonoBehaviour
     // --------------------------------------------------------------------------------------------------------------
 
     #region Private methods 
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     private void Start()
     {
@@ -162,6 +169,15 @@ public class PlayerController : MonoBehaviour
         }
 
         // Move player 
+
+        if(direction != Vector3.zero)
+        {
+            animator.SetFloat("Speed_f", 0.3f);
+        }
+        else
+        {
+            animator.SetFloat("Speed_f", 0.1f);
+        }
 
         transform.Translate(direction * Time.deltaTime * actualSpeed);
     }

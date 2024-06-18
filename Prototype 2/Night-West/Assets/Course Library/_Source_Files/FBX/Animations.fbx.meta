@@ -167,7 +167,7 @@ ModelImporter:
     7400014: Death_01
     7400016: Idle_LeaningAgaintWall
     7400018: Idle_Smoking
-    7400020: Idle_SexyDance
+    7400020: Idle_Dance
     7400022: Falling
     7400024: Standing_Jump
     7400026: Dead_01
@@ -552,7 +552,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Idle_SexyDance
+      name: Idle_Dance
       takeName: Take 001
       firstFrame: 712
       lastFrame: 770
