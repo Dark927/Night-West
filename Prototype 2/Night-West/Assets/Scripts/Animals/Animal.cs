@@ -32,7 +32,6 @@ public class Animal : MonoBehaviour
     bool isLost = false;
 
     Animator animator;
-    string playerTag = "Player";
 
     #endregion
 
@@ -61,8 +60,6 @@ public class Animal : MonoBehaviour
     {
         MoveForward();
         RunAwayAction();
-
-
     }
 
 
@@ -144,7 +141,7 @@ public class Animal : MonoBehaviour
 
         if (actualFood == foodToLeave)
         {
-            GameManager gameManager = GameObject.FindAnyObjectByType<GameManager>();
+            GameManager gameManager = FindAnyObjectByType<GameManager>();
 
             if (gameManager != null)
             {

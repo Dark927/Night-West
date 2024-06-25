@@ -13,6 +13,6 @@ public class DetectCollisions : MonoBehaviour
             animal.Feed();
         }
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

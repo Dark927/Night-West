@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
     {
         // Errors check 
 
-        if(isFatalError)
+        if (isFatalError)
         {
             return;
         }
@@ -108,7 +108,14 @@ public class PlayerController : MonoBehaviour
             {
                 int randomIndex = Random.Range(0, projectileFoodPrefabs.Count);
 
-                Instantiate(projectileFoodPrefabs[randomIndex], projectileSpawnPoint.position, projectileFoodPrefabs[randomIndex].transform.rotation);
+                // Get an object object from the pool
+                GameObject pooledProjectile = ObjectPooler.SharedInstance.GetPooledObject(randomIndex);
+
+                if (pooledProjectile != null)
+                {
+                    pooledProjectile.SetActive(true); // activate it
+                    pooledProjectile.transform.position = projectileSpawnPoint.position; // position it at player
+                }
             }
         }
     }
@@ -182,7 +189,7 @@ public class PlayerController : MonoBehaviour
 
         // Move player 
 
-        if(direction != Vector3.zero)
+        if (direction != Vector3.zero)
         {
             animator.SetFloat("Speed_f", 0.3f);
         }
@@ -280,7 +287,7 @@ public class PlayerController : MonoBehaviour
     }
 
     #endregion
-    
+
     // -------------------------------------------------------
 
     public void TakeDamage(int damage = 1)

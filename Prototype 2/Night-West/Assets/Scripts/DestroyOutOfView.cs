@@ -8,7 +8,7 @@ public class DestroyOutOfView : MonoBehaviour
     // Parameters
     // --------------------------------------------------------------------------------------------------------------
 
-    #region parameters
+    #region Parameters
 
     [Header("Bounds")]
     [SerializeField] float maxTopBound = 35f;
@@ -16,6 +16,13 @@ public class DestroyOutOfView : MonoBehaviour
     [SerializeField] float maxSideBound = 24f;
 
     #endregion
+
+
+    // --------------------------------------------------------------------------------------------------------------
+    // Private Methods
+    // --------------------------------------------------------------------------------------------------------------
+
+    #region Private Methods
 
     // Update is called once per frame
     void Update()
@@ -25,7 +32,18 @@ public class DestroyOutOfView : MonoBehaviour
 
         if (isOverVerticalBounds || isOverSideBounds)
         {
-            Destroy(gameObject);
+            bool isFood = (GetComponent<Food>() == null) ? false : true;
+
+            if (isFood)
+            {
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
+
+    #endregion
 }

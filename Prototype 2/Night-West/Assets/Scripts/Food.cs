@@ -29,8 +29,14 @@ public class Food : MonoBehaviour
     #endregion
 
 
+    // --------------------------------------------------------------------------------------------------------------
+    // Private Methods
+    // --------------------------------------------------------------------------------------------------------------
+
+    #region Private Methods
+
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
         MoveForward();
     }
@@ -39,4 +45,6 @@ public class Food : MonoBehaviour
     {
         transform.Translate(Vector3.forward * Time.deltaTime * speed);
     }
+
+    #endregion
 }

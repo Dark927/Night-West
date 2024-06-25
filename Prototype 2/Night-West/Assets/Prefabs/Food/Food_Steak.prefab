@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -946060982059746641}
   - component: {fileID: -7319851547530726515}
   - component: {fileID: -3790749333747117414}
-  - component: {fileID: -4178914153926317908}
+  - component: {fileID: 7398668879402680694}
   m_Layer: 0
   m_Name: Food_Steak
   m_TagString: Untagged
@@ -146,7 +146,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.46739918, y: 0.08559368, z: 0.6615112}
   m_Center: {x: 0, y: 0.04279684, z: 0}
---- !u!114 &-4178914153926317908
+--- !u!114 &7398668879402680694
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

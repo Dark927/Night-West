@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3779796207901520003}
   - component: {fileID: -2730490004678475931}
   - component: {fileID: -7346097699626479602}
-  - component: {fileID: -4963605307713752626}
+  - component: {fileID: 2856657416073218741}
   m_Layer: 0
   m_Name: Food_Carrot
   m_TagString: Untagged
@@ -146,7 +146,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.14170074, y: 0.141707, z: 0.61012447}
   m_Center: {x: 0, y: 0.0708535, z: -0.000000059604645}
---- !u!114 &-4963605307713752626
+--- !u!114 &2856657416073218741
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
